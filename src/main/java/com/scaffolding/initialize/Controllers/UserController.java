@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.scaffolding.initialize.Entities.LoginBot;
 import com.scaffolding.initialize.Entities.Response.ResponseApi;
-import com.scaffolding.initialize.Interfaces.ILoginBotService;
+import com.scaffolding.initialize.Entities.Response.UserResponse;
+import com.scaffolding.initialize.Services.UserService;
 import com.scaffolding.initialize.Swagger.Shemas.AuthenticationFailed;
-import com.scaffolding.initialize.Swagger.Shemas.ListLoginBot;
+import com.scaffolding.initialize.Swagger.Shemas.ListUser;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,27 +22,27 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/v1")
-@Tag(name = "ChatBot", description = "API de chatbot")
-public class ChatBotController {
+@Tag(name = "User", description = "API de usuarios")
+public class UserController {
 
-    private ILoginBotService loginBotService;
+    private UserService userService;
 
-    public ChatBotController(ILoginBotService loginBotService) {
-        this.loginBotService = loginBotService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/chatbot")
-    @Operation(summary = "Obtiene los chatbot", description = "Este endpoint devuelve los chatbot disponibles")
+    @GetMapping("/users")
+    @Operation(summary = "Obtiene los usuarios", description = "Este endpoint devuelve los usuarios disponibles")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "ChatBot Response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ListLoginBot.class))),
+            @ApiResponse(responseCode = "200", description = "User Response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ListUser.class))),
             @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthenticationFailed.class))),
             @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthenticationFailed.class))),
     })
     public ResponseEntity<?> getChatBotResponse() {
-        List<LoginBot> loginBotData = loginBotService.getLoginBotData();
+        List<UserResponse> userData = userService.findAll();
 
-        ResponseApi<List<LoginBot>> apiResponse = new ResponseApi<>(true, "ChatBot Response",
-                loginBotData);
+        ResponseApi<List<UserResponse>> apiResponse = new ResponseApi<>(true, "User Response",
+                userData);
 
         return ResponseEntity.ok(apiResponse);
     }

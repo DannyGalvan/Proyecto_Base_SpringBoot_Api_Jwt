@@ -14,7 +14,6 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 @SpringBootApplication
 @EnableJpaRepositories
 public class InitializeApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(InitializeApplication.class, args);
 	}

@@ -1,10 +1,8 @@
 package com.scaffolding.initialize.Entities.Response;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.scaffolding.initialize.Entities.LoginBot;
+import com.scaffolding.initialize.Entities.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +17,8 @@ import lombok.Setter;
 public class UserResponse {
     private Integer id;
 
+    private Integer role_id;
+
     private String email;
 
     private String name;
@@ -29,9 +29,9 @@ public class UserResponse {
 
     private Boolean active = true;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     private LocalDateTime dateToken;
 
-    private List<LoginBot> loginBots = new ArrayList<>();
+    private Role role;
 }

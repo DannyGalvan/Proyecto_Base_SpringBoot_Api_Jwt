@@ -135,6 +135,6 @@ public class WebSecurityConfig {
 
     private List<RequestMatcher> authenticatedRequestMatchers() {
         return List.of(
-            new AntPathRequestMatcher("/api/v1/chatbot/**", "GET"));
+            new AntPathRequestMatcher("/api/v1/users/**", "GET"));
     }
 }

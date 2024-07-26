@@ -11,6 +11,7 @@ import com.scaffolding.initialize.Entities.Response.UserResponse;
 public interface UserMapper {
 
   UserResponse mapUserToUserResponse(User user);
+  
   @Mapping(target = "password", ignore = true)
   User mapUserResponseToUser(UserResponse userResponse);
 }

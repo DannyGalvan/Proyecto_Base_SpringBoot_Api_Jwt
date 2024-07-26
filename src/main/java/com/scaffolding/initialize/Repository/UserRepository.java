@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.scaffolding.initialize.Entities.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer>, UserRepositoryCustom {
   List<User> findAll();
 
   User findByUserName(String username);
