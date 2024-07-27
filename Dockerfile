@@ -5,7 +5,7 @@ FROM maven:3.9.0-eclipse-temurin-17-alpine AS build
 COPY . .
 
 #Copiar el secred de la direccion /etc/secrets/<filename> al la ruta resources del proyecto de spring
-COPY /etc/secrets/aplication-prod.properties ./src/main/resources/application-prod.properties
+COPY /etc/secrets/application-prod.properties ./src/main/resources/application-prod.properties
 
 RUN ls -la
 
