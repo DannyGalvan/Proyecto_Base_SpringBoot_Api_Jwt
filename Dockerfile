@@ -6,7 +6,8 @@ FROM maven:3.9.0-eclipse-temurin-17-alpine AS build
 # Copiar todos los archivos al contenedor
 COPY . .
 
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
+# Mostrar el contenido del archivo .env
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cp /etc/secrets/.env /src/main/resources/application-prod.properties
 
 # copiar el archivo .env a la carpeta resources del proyecto pero con el nombre application-prod.properties
 RUN cp /etc/secrets/.env src/main/resources/application-prod.properties
