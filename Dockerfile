@@ -1,11 +1,11 @@
 # Fase de construcción
 FROM maven:3.9.0-eclipse-temurin-17-alpine AS build
 
+#Copiar el secred de la direccion /etc/secrets/<filename> al la ruta resources del proyecto de spring
+COPY .application-prod.properties ./src/main/resources/application-prod.properties
+
 # Copiar todos los archivos al contenedor
 COPY . .
-
-#Copiar el secred de la direccion /etc/secrets/<filename> al la ruta resources del proyecto de spring
-COPY /etc/secrets/application-prod.properties ./src/main/resources/application-prod.properties
 
 RUN ls -la
 
