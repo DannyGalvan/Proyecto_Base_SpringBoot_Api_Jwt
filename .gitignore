@@ -1,6 +1,7 @@
 HELP.md
 target/
 Dockerfile.prod
+Dockerfile.dev
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
