@@ -25,5 +25,5 @@ COPY --from=build target/initialize-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps
 EXPOSE 8080
 
 # Comando para ejecutar Tomcat con las variables de entorno cargadas
-CMD ["catalina.sh" "run"]
+CMD ["catalina.sh", "run"]
 
