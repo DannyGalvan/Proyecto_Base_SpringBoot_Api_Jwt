@@ -1,9 +1,6 @@
 # Fase de construcción
 FROM maven:3.9.0-eclipse-temurin-17-alpine AS build
 
-#Copiar el secred de la direccion /etc/secrets/<filename> al la ruta resources del proyecto de spring
-COPY .application-prod.properties ./src/main/resources/application-prod.properties
-
 # Copiar todos los archivos al contenedor
 COPY . .
 
@@ -28,5 +25,5 @@ COPY --from=build target/initialize-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps
 EXPOSE 8080
 
 # Comando para ejecutar Tomcat con las variables de entorno cargadas
-CMD ["catalina.sh", "run"]
+CMD ["catalina.sh" "run"]
 
