@@ -1,5 +1,11 @@
+# syntax = docker/dockerfile:1.2
+
 # Fase de construcción
 FROM maven:3.9.0-eclipse-temurin-17-alpine AS build
+
+RUN ls ./etc/secrets
+
+RUN --mount=type=secret,id=application_prod.properties,dst=/etc/secrets/application-prod.properties cat /etc/secrets/application-prod.properties
 
 # Copiar todos los archivos al contenedor
 COPY . .
