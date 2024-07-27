@@ -8,6 +8,9 @@ COPY . .
 
 RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
 
+# copiar el archivo .env a la carpeta resources del proyecto pero con el nombre application-prod.properties
+RUN cp /etc/secrets/.env src/main/resources/application-prod.properties
+
 RUN ls -la
 
 # Verificar la versión de Maven
